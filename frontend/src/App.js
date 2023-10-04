@@ -20,6 +20,15 @@ import Reset from './components/Reset';
 import WorkingDays from './components/WorkingDays';
 import AllRequests from './components/AllRequests';
 
+import ViewRoute from './components/route/ViewRoute';
+import RouteDashboard from './components/route/RouteDashboard';
+import AllRegularRoute from './components/route/AllRegularRoute';
+import AllSpecialRoute from './components/route/AllSpecialRoute';
+import AddRegularRoute from './components/route/AddRegularRoute';
+import AddSpecialRoute from './components/route/AddSpecialRoute';
+import UpdateRegularRoute from './components/route/UpdateRegularRoute';
+import UpdateSpecialRoute from './components/route/UpdateSpecialRoute';
+
 
 
 
@@ -72,6 +81,19 @@ function App() {
       <Route path="/get/:id" element={<UpdateRequest/>}/>
       <Route path="/home" element={<Home/>}/>
       <Route path="/workingdays" element={<WorkingDays/>}/>
+
+
+      <Route path="/routedash" element={<RouteDashboard/>}/>
+      <Route path="/viewroute" element={<ViewRoute/>}/>
+      <Route path="/allrroute" element={<AllRegularRoute/>}/>
+      <Route path="/allsroute" element={<AllSpecialRoute/>}/>
+      <Route path="/addrroute" element={<AddRegularRoute/>}/>
+      <Route path="/addsroute" element={<AddSpecialRoute/>}/>
+      <Route path="/updaterroute/:id" element={<UpdateRegularRoute/>}/>
+      <Route path="/getrroute/:id" element={<UpdateRegularRoute/>}/>
+      <Route path="/updatesroute/:id" element={<UpdateSpecialRoute/>}/>
+      <Route path="/getsroute/:id" element={<UpdateSpecialRoute/>}/>
+      
       
       
       </Routes>
