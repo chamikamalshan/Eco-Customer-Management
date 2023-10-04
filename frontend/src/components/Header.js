@@ -42,6 +42,9 @@ function Header(){
            <Link to="/routedash" className="nav-link "> <b>ROUTES</b> </Link>
         </li>
         <li class="nav-item">
+           <Link to="/financedash" className="nav-link "> <b>FINANCE</b> </Link>
+        </li>
+        <li class="nav-item">
            <Link to="/track" className="nav-link "> <b>SERVICES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></Link>
         </li>
       <li class="nav-item" id='logout' style={{color:'white', marginTop:'6px', marginRight:'15px'}}>
