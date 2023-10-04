@@ -36,8 +36,14 @@ connection.once("open", () => {
 })
 
 const requestRouter = require("./routes/requests.js");
+const regularrouteRouter = require("./routes/regularroutes.js");
+const specialrouteRouter = require("./routes/specialroutes.js");
 
 app.use("/request",requestRouter);
+app.use("/regularroute",regularrouteRouter);
+app.use("/specialroute",specialrouteRouter);
+
+
 
 //doctor register & login ---------------------------------------------------------------------------------
 
