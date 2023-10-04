@@ -8,8 +8,6 @@ import R02 from './components/R02';
 import R03 from './components/R03';
 import Home from './components/Home';
 import Cookies from 'js-cookie'
-import AddAppointment from './components/AddAppointment';
-import AllAppointments from './components/AllAppointments';
 import {BrowserRouter as Router,Routes, Route} from "react-router-dom"
 import UpdateRequest from './components/UpdateRequest';
 import Requests from './components/Requests';
