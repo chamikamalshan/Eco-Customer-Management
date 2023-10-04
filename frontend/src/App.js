@@ -27,6 +27,13 @@ import AddSpecialRoute from './components/route/AddSpecialRoute';
 import UpdateRegularRoute from './components/route/UpdateRegularRoute';
 import UpdateSpecialRoute from './components/route/UpdateSpecialRoute';
 
+import FinanceDashboard from './components/finance/FinanceDashboard';
+import AllStaffSalary from './components/finance/AllStaffSalary';
+import UpdateStaffSalary from './components/finance/UpdateStaffSalary';
+import SalaryReport from './components/finance/SalaryReport';
+import AddStaffSalary from './components/finance/AddStaffSalary';
+
+
 
 
 
@@ -91,6 +98,14 @@ function App() {
       <Route path="/getrroute/:id" element={<UpdateRegularRoute/>}/>
       <Route path="/updatesroute/:id" element={<UpdateSpecialRoute/>}/>
       <Route path="/getsroute/:id" element={<UpdateSpecialRoute/>}/>
+      
+
+      <Route path="/financedash" element={<FinanceDashboard/>}/>
+      <Route path="/allssalary" element={<AllStaffSalary/>}/>
+      <Route path="/addssalary" element={<AddStaffSalary/>}/>
+      <Route path="/updatessalary/:id" element={<UpdateStaffSalary/>}/>
+      <Route path="/getssalary/:id" element={<UpdateStaffSalary/>}/>
+      <Route path="/salaryreport" element={<SalaryReport/>}/>
       
       
       
