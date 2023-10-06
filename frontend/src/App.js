@@ -32,6 +32,11 @@ import AllStaffSalary from './components/finance/AllStaffSalary';
 import UpdateStaffSalary from './components/finance/UpdateStaffSalary';
 import SalaryReport from './components/finance/SalaryReport';
 import AddStaffSalary from './components/finance/AddStaffSalary';
+import WasteDashboard from './components/waste/WasteDashboard';
+import AllWaste from './components/waste/AllWaste';
+import AddWaste from './components/waste/AddWaste';
+import UpdateWaste from './components/waste/UpdateWaste';
+import WasteReport from './components/waste/WasteReport';
 
 
 
@@ -106,6 +111,14 @@ function App() {
       <Route path="/updatessalary/:id" element={<UpdateStaffSalary/>}/>
       <Route path="/getssalary/:id" element={<UpdateStaffSalary/>}/>
       <Route path="/salaryreport" element={<SalaryReport/>}/>
+
+
+      <Route path="/wastedash" element={<WasteDashboard/>}/>
+      <Route path="/allwaste" element={<AllWaste/>}/>
+      <Route path="/addwaste" element={<AddWaste/>}/>
+      <Route path="/updatewaste/:id" element={<UpdateWaste/>}/>
+      <Route path="/getwaste/:id" element={<UpdateWaste/>}/>
+      <Route path="/wastereport" element={<WasteReport/>}/>
       
       
       
