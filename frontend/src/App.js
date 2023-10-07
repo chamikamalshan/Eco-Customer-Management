@@ -37,6 +37,10 @@ import AllWaste from './components/waste/AllWaste';
 import AddWaste from './components/waste/AddWaste';
 import UpdateWaste from './components/waste/UpdateWaste';
 import WasteReport from './components/waste/WasteReport';
+import StaffDashboard from './components/staff/StaffDashboard';
+import AddStaffMember from './components/staff/AddStaffMember';
+import AllStaffMembers from './components/staff/AllStaffMembers';
+import UpdateStaffMember from './components/staff/UpdateStaffMember';
 
 
 
@@ -119,6 +123,14 @@ function App() {
       <Route path="/updatewaste/:id" element={<UpdateWaste/>}/>
       <Route path="/getwaste/:id" element={<UpdateWaste/>}/>
       <Route path="/wastereport" element={<WasteReport/>}/>
+
+
+      <Route path="/staffdash" element={<StaffDashboard/>}/>
+      <Route path="/addsmember" element={<AddStaffMember/>}/>
+      <Route path="/allsmember" element={<AllStaffMembers/>}/>
+      <Route path="/updatesmember/:id" element={<UpdateStaffMember/>}/>
+      <Route path="/getsmember/:id" element={<UpdateStaffMember/>}/>
+
       
       
       
