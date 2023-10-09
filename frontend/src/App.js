@@ -41,6 +41,10 @@ import StaffDashboard from './components/staff/StaffDashboard';
 import AddStaffMember from './components/staff/AddStaffMember';
 import AllStaffMembers from './components/staff/AllStaffMembers';
 import UpdateStaffMember from './components/staff/UpdateStaffMember';
+import TaskDashboard from './components/task/TaskDashboard';
+import AddStaffRequest from './components/task/AddStaffRequest';
+import AllStaffRequest from './components/task/AllStaffRequest';
+import UpdateStaffRequest from './components/task/UpdateStaffRequest';
 
 
 
@@ -130,6 +134,13 @@ function App() {
       <Route path="/allsmember" element={<AllStaffMembers/>}/>
       <Route path="/updatesmember/:id" element={<UpdateStaffMember/>}/>
       <Route path="/getsmember/:id" element={<UpdateStaffMember/>}/>
+
+
+      <Route path="/taskdash" element={<TaskDashboard/>}/>
+      <Route path="/addstaffrequest" element={<AddStaffRequest/>}/>
+      <Route path="/allstaffrequest" element={<AllStaffRequest/>}/>
+      <Route path="/updatestaffrequest/:id" element={<UpdateStaffRequest/>}/>
+      <Route path="/getstaffrequest/:id" element={<UpdateStaffRequest/>}/>
 
       
       
