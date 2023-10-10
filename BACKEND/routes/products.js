@@ -1,32 +1,25 @@
 const router = require("express").Router();
-let Request = require("../models/request");
+const {product} = require("express");
+let Product = require("../models/product");
 
 
 //Create Class..
-router.route("/add").post((req,res)=>{
+router.route("/addproduct").post((req,res)=>{
 
-    const name = req.body.name;
-    const phone = Number(req.body.phone);
-    const email = req.body.email;
-    const date =  req.body.date;
-    const address = req.body.address;
-    const slip = req.body.slip;
-    const message = req.body.message;
-   
+    const pname = req.body.pname;
+    const price =  Number(req.body.price);
+    const pstock =  Number(req.body.pstock);
 
 
-    const newRequest = new Request({
-        name,
-        phone,
-        email,
-        date,
-        address,
-        slip, 
-        message
+
+    const newProduct = new Product({
+        pname,
+        price,
+        pstock
 
     })
 
-    newRequest.save().then(()=>{
+    newProduct.save().then(()=>{
         res.json(" Added")
     }).catch((err)=>{
         console.log(err);
@@ -35,23 +28,24 @@ router.route("/add").post((req,res)=>{
 })
 
 //Read..
-router.route("/all").get((req,res)=>{
+router.route("/allproduct").get((req,res)=>{
 
-    Request.find().then((request)=>{
-        res.json(request)
+    Product.find().then((product)=>{
+        res.json(product)
+    }).catch((err)=>{
+        console.log(err)
+    })
+})
+router.route("/viewproduct").get((req,res)=>{
+
+    Product.find().then((product)=>{
+        res.json(product)
     }).catch((err)=>{
         console.log(err)
     })
 })
 
-router.route("/table").get((req,res)=>{
 
-    Request.find().then(()=>{
-        res.json(request)
-    }).catch((err)=>{
-        console.log(err)
-    })
-})
 
 //Update Class..
 /*router.route("/update/:id").put(async (req, res) => {
@@ -76,15 +70,15 @@ router.route("/table").get((req,res)=>{
 }) */
 
 //Delete Class..
-router.route("/delete/:id").delete(async (req, res) => {
-    let requestId = req.params.id;
+router.route("/deleteproduct/:id").delete(async (req, res) => {
+    let productId = req.params.id;
 
-    await Request.findByIdAndDelete(requestId)
+    await Product.findByIdAndDelete(productId)
     .then(() => {
-        res.status(200).send({status: "Request Deleted"});
+        res.status(200).send({status: "Route Deleted"});
     }).catch((err) => {
         console.log(err.message);
-        res.status(500).send({status: "Error with delete request", error: err.message});
+        res.status(500).send({status: "Error with delete route", error: err.message});
     })
 })
 
@@ -100,22 +94,31 @@ router.route("/delete/:id").delete(async (req, res) => {
     })
 })  */
 
-router.route("/get/:id").get(async (req, resp) => {
-    let result = await Request.findById({_id:req.params.id})
+router.route("/getproduct/:id").get(async (req, resp) => {
+    let result = await Product.findById({_id:req.params.id})
     
     if(result){
         resp.send(result)
     }else{
         resp.send({"result":"No Record Found."})
     }
-})  
+})
+router.route("/getproductcard/:id").get(async (req, resp) => {
+    let result = await Product.findById({_id:req.params.id})
+    
+    if(result){
+        resp.send(result)
+    }else{
+        resp.send({"result":"No Record Found."})
+    }
+})    
 
 
 
 
 
-router.route("/update/:id").put(async (req, resp) => {
-    let result = await Request.findByIdAndUpdate({_id:req.params.id},{$set: req.body})
+router.route("/updateproduct/:id").put(async (req, resp) => {
+    let result = await Product.findByIdAndUpdate({_id:req.params.id},{$set: req.body})
     
    resp.send(result)
 })  
