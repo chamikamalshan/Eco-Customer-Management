@@ -45,6 +45,12 @@ import TaskDashboard from './components/task/TaskDashboard';
 import AddStaffRequest from './components/task/AddStaffRequest';
 import AllStaffRequest from './components/task/AllStaffRequest';
 import UpdateStaffRequest from './components/task/UpdateStaffRequest';
+import ProductDashboard from './components/product/ProductDashboard';
+import AddProduct from './components/product/AddProduct';
+import AllProduct from './components/product/AllProduct.js';
+import CheckProduct from './components/product/CheckProduct';
+import ViewProduct from './components/product/ViewProduct.js';
+import UpdateProduct from './components/product/UpdateProduct';
 
 
 
@@ -141,6 +147,14 @@ function App() {
       <Route path="/allstaffrequest" element={<AllStaffRequest/>}/>
       <Route path="/updatestaffrequest/:id" element={<UpdateStaffRequest/>}/>
       <Route path="/getstaffrequest/:id" element={<UpdateStaffRequest/>}/>
+
+      <Route path="/productdash" element={<ProductDashboard/>}/>
+      <Route path="/addproduct" element={<AddProduct/>}/>
+      <Route path="/viewproduct" element={<ViewProduct/>}/>
+      <Route path="/allproduct" element={<AllProduct/>}/>
+      <Route path="/getproductcard/:id" element={<CheckProduct/>}/>
+      <Route path="/updateproduct/:id" element={<UpdateProduct/>}/>
+      <Route path="/getproduct/:id" element={<UpdateProduct/>}/>
 
       
       

@@ -42,6 +42,7 @@ const staffsalaryRouter = require("./routes/staffsalaries.js");
 const wasteRouter = require("./routes/wastes.js");
 const staffmemberRouter = require("./routes/staffmembers.js");
 const staffrequestRouter = require("./routes/staffrequests.js");
+const productRouter = require("./routes/products.js");
 
 
 
@@ -53,6 +54,8 @@ app.use("/staffsalary",staffsalaryRouter);
 app.use("/waste",wasteRouter);
 app.use("/staffmember",staffmemberRouter);
 app.use("/staffrequest",staffrequestRouter);
+app.use("/product",productRouter);
+
 
 
 //doctor register & login ---------------------------------------------------------------------------------
