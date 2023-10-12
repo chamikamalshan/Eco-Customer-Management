@@ -12,7 +12,7 @@ import {BrowserRouter as Router,Routes, Route} from "react-router-dom"
 import UpdateRequest from './components/UpdateRequest';
 import Requests from './components/Requests';
 import { useEffect, useState } from 'react';
-import Profile from './components/Profile';
+import AdminDashboard from './components/AdminDashboard';
 import Forgot from './components/Forgot';
 import Reset from './components/Reset';
 import WorkingDays from './components/WorkingDays';
@@ -105,6 +105,7 @@ function App() {
       <Route path="/get/:id" element={<UpdateRequest/>}/>
       <Route path="/home" element={<Home/>}/>
       <Route path="/workingdays" element={<WorkingDays/>}/>
+      <Route path="/admindash" element={<AdminDashboard/>}/>
 
 
       <Route path="/routedash" element={<RouteDashboard/>}/>

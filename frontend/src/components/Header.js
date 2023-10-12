@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar9.css';
 import Cookies from 'js-cookie';
 
@@ -13,6 +12,7 @@ function Header(){
 
     const logOut=()=>{
          Cookies.remove("username") 
+         navigate('/home')
     }
 
     
@@ -42,25 +42,13 @@ function Header(){
            <Link to="/routedash" className="nav-link "> <b>ROUTES</b> </Link>
         </li>
         <li class="nav-item">
-           <Link to="/financedash" className="nav-link "> <b>FINANCE</b> </Link>
-        </li>
-        <li class="nav-item">
            <Link to="/wastedash" className="nav-link "> <b>WASTE</b> </Link>
-        </li>
-        <li class="nav-item">
-           <Link to="/staffdash" className="nav-link "> <b>STAFF</b> </Link>
-        </li>
-        <li class="nav-item">
-           <Link to="/taskdash" className="nav-link "> <b>TASK</b> </Link>
-        </li>
-        <li class="nav-item">
-           <Link to="/productdash" className="nav-link "> <b>PRODUCT</b> </Link>
         </li>
         <li class="nav-item">
            <Link to="/track" className="nav-link "> <b>SERVICES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></Link>
         </li>
       <li class="nav-item" id='logout' style={{color:'white', marginTop:'6px', marginRight:'15px'}}>
-        <h><i class="fa-solid fa-circle-user fa-xl"></i>&nbsp;&nbsp;{cookieVal}&nbsp;&nbsp;&nbsp;&nbsp;</h>
+        <h><i class="fa-solid fa-circle-user fa-xl"></i>&nbsp;&nbsp;<Link to="/admindash" style={{color:'white'}}>{cookieVal}</Link>&nbsp;&nbsp;&nbsp;&nbsp;</h>
         <button  class="btn btn-success" onClick={logOut}>Logout</button>
       </li>
       <li class="nav-item" id='logout' style={{color:'white', marginTop:'6px', marginRight:'15px'}}>
