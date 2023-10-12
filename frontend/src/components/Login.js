@@ -26,6 +26,7 @@ export default function Login() {
             .then(res=>{
                 if(res.data=="exist"){
                     Cookies.set("username",username,{expires:1})
+                    history("/admindash",{state:{id:username}})
                 }
                 else if(res.data=="notexist"){
                     alert("User have not Register!")
