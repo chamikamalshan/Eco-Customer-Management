@@ -33,15 +33,7 @@ export default function TaskDashboard(){
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
+               
 
              </div>
           </div>
@@ -71,7 +63,7 @@ export default function TaskDashboard(){
       </center>
       <br></br>
       <div class="card-body">
-        <Link to='/allstaffrequest'>
+        <Link to='/allreq'>
       <button type="button" class="btn btn-outline-light" style={{marginTop: '100px'}}>CLICK</button>
       </Link>
       </div>
@@ -95,7 +87,7 @@ export default function TaskDashboard(){
       </center>
       <br></br>
       <div class="card-body">
-        <Link to='/allsmember'>
+        <Link to='/addstaffrequest'>
       <button type="button" class="btn btn-outline-light" style={{marginTop: '100px'}}>CLICK</button>
       </Link>
       </div>
@@ -119,7 +111,7 @@ export default function TaskDashboard(){
       </center>
       <br></br>
       <div class="card-body">
-        <Link to='/allssalary'>
+        <Link to='/allstaffrequest'>
       <button type="button" class="btn btn-outline-light" style={{marginTop: '100px'}}>CLICK</button>
       </Link>
       </div>

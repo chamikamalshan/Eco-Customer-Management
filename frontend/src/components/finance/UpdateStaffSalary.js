@@ -67,15 +67,7 @@ export default function UpdateStaffSalary(){
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
+                
 
              </div>
           </div>
@@ -192,8 +184,9 @@ export default function UpdateStaffSalary(){
              
               <div class="col-12">
               <br></br>
+              <Link to='/financedash'>
               <button type="submit" class="btn btn-success" onClick={UpdateStaffSalary}>SUBMIT</button>
-    
+              </Link>
               </div>
   
           </form>

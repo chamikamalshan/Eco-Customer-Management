@@ -10,6 +10,7 @@ export default function UpdateStaffRequest(){
   const [workarea, setWorkArea] = React.useState("");
   const [reqdate, setReqDate] = React.useState("");
   const [cnumber, setCNumber] = React.useState("");
+  const [reqstatus, setReqStatus] = React.useState("");
   const [error, setError] = useState("false");
   const location = useLocation();
   const data = location.state;
@@ -28,13 +29,14 @@ export default function UpdateStaffRequest(){
     setWorkArea(result.workarea);
     setReqDate(result.reqdate);
     setCNumber(result.cnumber);
+    setReqStatus(result.reqstatus);
   }
 
   const UpdateStaffRequest = async () =>{
-    console.warn(staffsize,workarea,reqdate,cnumber)
+    console.warn(staffsize,workarea,reqdate,cnumber,reqstatus)
     let result = await fetch(`http://localhost:8070/staffrequest/updatestaffrequest/${params.id}`,{
       method:'put',
-      body:JSON.stringify({staffsize,workarea,reqdate,cnumber}),
+      body:JSON.stringify({staffsize,workarea,reqdate,cnumber,reqstatus}),
       headers:{
         'Content-Type':'Application/json'
       }
@@ -70,15 +72,7 @@ export default function UpdateStaffRequest(){
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
+                
 
              </div>
           </div>
@@ -149,10 +143,28 @@ export default function UpdateStaffRequest(){
                   </div>
 
               </div>
+              <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label" style={{float: 'left'}}><b>Status:</b></label>
+                  <select class="form-select is-invalid" id="validationServer01" aria-label="Default select example" value={reqstatus}
+                  onChange={(e)=>{
+
+                    setReqStatus(e.target.value);
+                  
+                    }}required>
+                    <option value="">Open this select menu</option>
+                    <option value="Special Service">Special Service</option>
+                    <option value="Regular Service">Regular Service</option>
+                    </select>
+                    <div className="invalid-feedback">
+                  {error&&reqstatus.length<=0?<lable class="text" style={{color:'#FF0000'}}>Status can't be empty!</lable>:""}
+                  </div> 
+              </div>
              
               <div class="col-12">
               <br></br>
+              <Link to='/taskdash'>
               <button type="submit" class="btn btn-success" onClick={UpdateStaffRequest}>SUBMIT</button>
+              </Link>
     
               </div>
   

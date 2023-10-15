@@ -9,6 +9,7 @@ export default function UpdateStaffMember(){
   const [mname, setMName] = React.useState("");
   const [memail, setMEmail] = React.useState("");
   const [mphone, setMPhone] = React.useState("");
+  const [mdate, setMDate] = React.useState("");
   const [maddress, setMAddress] = React.useState("");
   const [mage, setMAge] = React.useState("");
   const [mgender, setMGender] = React.useState("");
@@ -33,6 +34,7 @@ export default function UpdateStaffMember(){
     setMName(result.mname);
     setMEmail(result.memail);
     setMPhone(result.mphone);
+    setMDate(result.mdate);
     setMAddress(result.maddress);
     setMAge(result.mage);
     setMGender(result.mgender);
@@ -43,10 +45,10 @@ export default function UpdateStaffMember(){
   }
 
   const UpdateStaffMember = async () =>{
-    console.warn(mname,memail,mphone,maddress,mage,mgender,mrole,mnic,mwdays,msalary)
+    console.warn(mname,memail,mphone,mdate,maddress,mage,mgender,mrole,mnic,mwdays,msalary)
     let result = await fetch(`http://localhost:8070/staffmember/updatesmember/${params.id}`,{
       method:'put',
-      body:JSON.stringify({mname,memail,mphone,maddress,mage,mgender,mrole,mnic,mwdays,msalary}),
+      body:JSON.stringify({mname,memail,mphone,mdate,maddress,mage,mgender,mrole,mnic,mwdays,msalary}),
       headers:{
         'Content-Type':'Application/json'
       }
@@ -61,6 +63,9 @@ export default function UpdateStaffMember(){
     }
     
   }
+
+  var date = new Date();
+  date.setDate(date.getDate() + 7);
  
 
   
@@ -79,15 +84,7 @@ export default function UpdateStaffMember(){
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
+                
 
              </div>
           </div>
@@ -146,6 +143,19 @@ export default function UpdateStaffMember(){
 
               </div>
               <div class="col-md-6">
+                  <label for="validationServer01" class="form-label" style={{float: 'left'}}><b>Date:</b></label>
+                  <input type="date" class="form-control is-invalid" id="validationServer01" aria-label="Default select example" value={mdate} min={new Date().toISOString().split('T')[0]} max={date.toISOString().split('T')[0]}
+                  onChange={(e)=>{
+
+                    setMDate(e.target.value);
+                  
+                    }}required/>
+                  <div className="invalid-feedback">
+                    {error&&mdate.length<=0?<lable class="text" style={{color:'#FF0000'}}>Date can't be empty!</lable>:""}
+                  </div>
+
+              </div>
+              <div class="col-md-6">
                   <label for="validationServer01" class="form-label" style={{float: 'left'}}><b>Address:</b></label>
                   <input type="text" class="form-control is-invalid" id="validationServer01" aria-label="Default select example" value={maddress}
                   onChange={(e)=>{
@@ -190,12 +200,19 @@ export default function UpdateStaffMember(){
               </div>
               <div class="col-md-6">
                   <label for="validationServer01" class="form-label" style={{float: 'left'}}><b>Role:</b></label>
-                  <input type="text" class="form-control is-invalid" id="validationServer01" aria-label="Default select example" value={mrole}
+                  <select class="form-select is-invalid" id="validationServer01" aria-label="Default select example" value={mrole}
                   onChange={(e)=>{
 
                     setMRole(e.target.value);
                   
-                    }}required/>
+                    }}required>
+                    <option value="">Open this select menu</option>
+                    <option value="Male">Recycling Facility Manager</option>
+                    <option value="Female">Driver</option>
+                    <option value="Male">Cleaner</option>
+                    <option value="Female">Waste Collection Supervisor</option>
+                    <option value="Male">Recycling Workers</option>
+                  </select>
                   <div className="invalid-feedback">
                     {error&&mrole.length<=0?<lable class="text" style={{color:'#FF0000'}}>Role can't be empty!</lable>:""}
                   </div>
@@ -252,7 +269,9 @@ export default function UpdateStaffMember(){
              
               <div class="col-12">
               <br></br>
+              <Link to='/staffdash'>
               <button type="submit" class="btn btn-success" onClick={UpdateStaffMember}>SUBMIT</button>
+              </Link>
     
               </div>
   

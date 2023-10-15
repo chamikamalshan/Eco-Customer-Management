@@ -114,7 +114,7 @@ export default function ViewProduct(){
                     <h6 class="card-title"><b>Available Stock:</b>{products.pstock}</h6>
                     <br></br>
                     <a className="btn btn-success"style={{marginLeft: '120px'}} href={`/getproductcard/${products._id}`}>
-                            <i className="fas fa-edit"></i>&nbsp;Update
+                    <i class="fa-solid fa-cart-shopping"></i>&nbsp;Buy
                         </a>
                     </div>
                     

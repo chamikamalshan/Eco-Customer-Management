@@ -173,8 +173,9 @@ export default function UpdateWaste(){
              
               <div class="col-12">
               <br></br>
+              <Link to='/wastedash'>
               <button type="submit" class="btn btn-success" onClick={UpdateWaste}>SUBMIT</button>
-    
+              </Link>
               </div>
   
           </form>

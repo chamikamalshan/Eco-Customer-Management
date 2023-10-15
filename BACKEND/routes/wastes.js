@@ -47,6 +47,14 @@ router.route("/wastereport").get((req,res)=>{
         console.log(err)
     })
 })
+router.route("/fwastereport").get((req,res)=>{
+
+    Waste.find().then((Waste)=>{
+        res.json(Waste)
+    }).catch((err)=>{
+        console.log(err)
+    })
+})
 
 
 //Update Class..

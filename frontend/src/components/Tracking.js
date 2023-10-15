@@ -78,7 +78,7 @@ export default function Tracking(){
                 <br></br>
 
                 <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
+                <Link to='/viewproduct'>
                 <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
                 </Link>
                 <Link to='/requests'>

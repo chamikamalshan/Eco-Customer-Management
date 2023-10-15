@@ -143,8 +143,9 @@ export default function UpdateProduct(){
              
               <div class="col-12">
               <br></br>
+              <Link to='/productdash'>
               <button type="submit" class="btn btn-success" onClick={UpdateProduct}>SUBMIT</button>
-    
+              </Link>
               </div>
   
           </form>

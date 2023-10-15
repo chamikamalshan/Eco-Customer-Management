@@ -2,22 +2,13 @@ import {useNavigate} from "react-router-dom"
 import { useLocation } from "react-router-dom";
 import {Link} from 'react-router-dom';
 import React, { useState } from 'react'
-import Cookies from 'js-cookie'
 
-export default function AdminDashboard() {
+export default function ReportDash() {
 
     const location = useLocation();
     const data = location.state;
     const navigate = useNavigate();
 
-    const cookieVal=Cookies.get("username")
-
-    const [fullname,FullName] = useState('')
-
-    const logOut=()=>{
-      Cookies.remove("username")
-      navigate('/home')
-    }
 
   return (
    
@@ -28,7 +19,7 @@ export default function AdminDashboard() {
       <div class="card-img-overlay">
         <br></br>
         <br></br>
-          <h1 class="card-title" style={{fontSize: '90px'}}><b>ADMIN</b> <b class="text-success">DASHBOARD</b></h1>
+          <h1 class="card-title" style={{fontSize: '90px'}}><b>ALL</b> <b class="text-success">REPORTS</b></h1>
           <br></br>
           <br></br>
           <br></br>
@@ -39,31 +30,27 @@ export default function AdminDashboard() {
 
     <br></br>
     <br></br>
-    <h1>Hello {fullname}</h1>
-                <h3>Your user name: {cookieVal}</h3>
-                <br></br>
-                <button  class="btn btn-danger" onClick={logOut}>Logout</button>
 
     <div >
     <br></br>
     <br></br>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4" style={{marginLeft: '40px'}}>
+    <div class="row row-cols-1 row-cols-md-3 g-4" style={{marginLeft: '230px'}}>
 
 
     <div class="col" style={{maxWidth: '300px',marginLeft: '40px'}}>
-    <div class="card text-white bg-success" style={{height:'300px',filter: 'brightness(80%)'}}>
+    <div class="card text-white bg-secondary" style={{height:'300px',filter: 'brightness(80%)'}}>
     <br></br>
     <br></br>
     <center>
-    <i class="fa-solid fa-landmark fa-5x"></i>
+    <i class="fa-solid fa-wallet fa-5x"></i>
     <br></br>
     <br></br>
-    <h2 class="card-title"><b class="text-white">FINANCE</b></h2>
+    <h2 class="card-title"><b class="text-white">SALARY</b></h2>
     </center>
     <br></br>
     <div class="card-body">
-    <Link to='/financedash'>
+    <Link to='/salaryreport'>
     <button type="button" class="btn btn-outline-light" style={{}}>CLICK</button>
     </Link>
     </div>
@@ -72,18 +59,18 @@ export default function AdminDashboard() {
     
 
     <div class="col" style={{maxWidth: '300px',marginLeft: '40px'}}>
-    <div class="card text-white bg-success" style={{height:'300px',filter: 'brightness(80%)'}}>
+    <div class="card text-white bg-secondary" style={{height:'300px',filter: 'brightness(80%)'}}>
     <br></br>
     <br></br>
     <center>
-    <i class="fa-solid fa-list-check fa-5x"></i>
+    <i class="fa-solid fa-coins fa-5x"></i>
     <br></br>
     <br></br>
-    <h2 class="card-title"><b class="text-white">TASK</b></h2>
+    <h2 class="card-title"><b class="text-white">STAFF SALARY</b></h2>
     </center>
     <br></br>
     <div class="card-body">
-    <Link to='/taskdash'>
+    <Link to='/viewstaffsalaryreport'>
     <button type="button" class="btn btn-outline-light" style={{}}>CLICK</button>
     </Link>
     </div>
@@ -92,58 +79,18 @@ export default function AdminDashboard() {
 
 
     <div class="col" style={{maxWidth: '300px',marginLeft: '40px'}}>
-    <div class="card text-white bg-success" style={{height:'300px',filter: 'brightness(80%)'}}>
+    <div class="card text-white bg-secondary" style={{height:'300px',filter: 'brightness(80%)'}}>
     <br></br>
     <br></br>
     <center>
-    <i class="fa-solid fa-box-open fa-5x"></i>
+    <i class="fa-solid fa-trash fa-5x"></i>
     <br></br>
     <br></br>
-    <h2 class="card-title"><b class="text-white">R&D Manager</b></h2>
+    <h2 class="card-title"><b class="text-white">WASTE</b></h2>
     </center>
     <br></br>
     <div class="card-body">
-    <Link to='/productdash'>
-    <button type="button" class="btn btn-outline-light" style={{}}>CLICK</button>
-    </Link>
-    </div>
-    </div>
-    </div>
-
-
-    <div class="col" style={{maxWidth: '300px',marginLeft: '40px'}}>
-    <div class="card text-white bg-success" style={{height:'300px',filter: 'brightness(80%)'}}>
-    <br></br>
-    <br></br>
-    <center>
-    <i class="fa-solid fa-truck-fast fa-5x"></i>
-    <br></br>
-    <br></br>
-    <h2 class="card-title"><b class="text-white">VEHICLE</b></h2>
-    </center>
-    <br></br>
-    <div class="card-body">
-    <Link to=''>
-    <button type="button" class="btn btn-outline-light" style={{}}>CLICK</button>
-    </Link>
-    </div>
-    </div>
-    </div>
-
-
-    <div class="col" style={{maxWidth: '300px',marginLeft: '40px'}}>
-    <div class="card text-white bg-success" style={{height:'300px',filter: 'brightness(80%)'}}>
-    <br></br>
-    <br></br>
-    <center>
-    <i class="fa-solid fa-user-group fa-5x"></i>
-    <br></br>
-    <br></br>
-    <h2 class="card-title"><b class="text-white">STAFF</b></h2>
-    </center>
-    <br></br>
-    <div class="card-body">
-    <Link to='/staffdash'>
+    <Link to='/fwastereport'>
     <button type="button" class="btn btn-outline-light" style={{}}>CLICK</button>
     </Link>
     </div>

@@ -4,26 +4,25 @@ import {useReactToPrint} from "react-to-print";
 import {Link} from 'react-router-dom';
 
 
-export default function SalaryReport(){
+export default function ViewRequest(){
 
     const conponentPDF = useRef();
-    const[staffsalaries, setStaffSalaries] = useState([]);
+    const[requests, setRequests] = useState([]);
     const[search, setsearch] = useState([]);
-    
     console.log(search)
     
     
 
     useEffect(()=>{
-        function getStaffSalaries() {
-            axios.get("http://localhost:8070/staffsalary/salaryreport").then((res)=>{
-               setStaffSalaries(res.data);
+        function getRequests() {
+            axios.get("http://localhost:8070/request/allreq").then((res)=>{
+               setRequests(res.data);
                console.log(res);
         }).catch((err)=>{
             alert(err.message);
         })
         }
-        getStaffSalaries();
+        getRequests();
 
         
     
@@ -35,12 +34,6 @@ export default function SalaryReport(){
     documentTitle: "userdata",
     onAfterPrint: ()=> alert("Download Successfully")
    });
-   
-   //total
-   const totalamount = staffsalaries.reduce((total,staffsalaries)=>{
-    return total + staffsalaries.samount
-   },0);
-   
   
 
     return(
@@ -49,11 +42,11 @@ export default function SalaryReport(){
         <div>
 
         <div class="card bg-dark text-white" >
-           <img src="financebg.png" class="card-img" alt="..." style={{height: '375px', filter: 'brightness(40%)'}}/>
+           <img src="requestbg.png" class="card-img" alt="..." style={{height: '375px', filter: 'brightness(40%)'}}/>
              <div class="card-img-overlay">
               <br></br>
               <br></br>
-                <h1 class="card-title" style={{fontSize: '90px'}}><b>STAFF</b> <b class="text-success">SALARY</b></h1>
+                <h1 class="card-title" style={{fontSize: '90px'}}><b>RECENT</b> <b class="text-success">REQUESTS</b></h1>
                 <br></br>
                 <br></br>
                 <br></br>
@@ -67,57 +60,46 @@ export default function SalaryReport(){
 
 
         
-        <div >
+        <div style={{width:'1350px'}} >
         <br></br>
         <br></br>
         <br></br>
-        
-
-        <div >
-
-        <div class="card text-dark  mb-3" style={{width: '1000px', backgroundColor:'#E0E0E0'}}>
-        
-        <div class="card-body"> 
         <br></br>
-        <h1 class="card-title text-success"><b>SALARY REPORT</b></h1>
-        <br></br>
-
         <div>
         <div ref={conponentPDF} style={{width:'100%'}}>
         <table class="table table-success table-striped">
             <thead class="table table-dark table-striped">
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Month</th>
-                    <th scope="col">Week</th>
-                    <th scope="col">Amount</th>
-                    
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Slip Link</th>
                 </tr>
             </thead>
             <tbody>
+            {requests.filter((requests) => {
+                return search.toString().toLowerCase() === '' ? requests: requests.name.toString().toLowerCase().includes(search);
                 
-                
-            {staffsalaries.filter((staffsalaries) => {
-                return search.toString().toLowerCase() === '' ? staffsalaries: staffsalaries.smonth.toString().toLowerCase().includes(search);
-                
-            }).map((staffsalaries, index) => {
+            }).map((requests, index) => {
                 return(
-                <tr key={staffsalaries._id}>
+                <tr key={requests._id}>
                     <th scoop="row">{index+1}</th>
-                    <td><a href={`/get/${staffsalaries._id}`} style={{textDecoration:'none',color:'black'}}>{staffsalaries.syear} </a> </td> 
-                    <td>{staffsalaries.smonth}</td>
-                    <td>{staffsalaries.sweek}</td>
-                    <td>{staffsalaries.samount}</td>
-                </tr>  
-                
-                )
-        })}
-
-                <tr>
-                <td colspan="4" class="table-active text-center"><b>Total Amount</b></td>
-                <td><b className='text-danger'>{totalamount}</b></td>
+                    <td><a href={`/get/${requests._id}`} style={{textDecoration:'none',color:'black'}}>{requests.name} </a> </td> 
+                    <td>{requests.phone}</td>
+                    <td>{requests.email}</td>
+                    <td>{requests.date}</td>
+                    <td>{requests.address}</td>
+                    <td>{requests.slip}</td>
                 </tr>
+                )
+                
+            
+            
+           
+        })}
 
             </tbody>
         </table>
@@ -135,16 +117,6 @@ export default function SalaryReport(){
 
         
     </div>
-
-
-
-        </div>
-        </div>
-        </div>
-
-
-
-        
     </div>
 
     <br></br>

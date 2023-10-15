@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 //doctor register & login ---------------------------------------------------------------------------------
 const CustomerData = require("./customer");
 //--------------------------------------------------------------------------------..--------------------end
+
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
@@ -55,6 +56,7 @@ app.use("/waste",wasteRouter);
 app.use("/staffmember",staffmemberRouter);
 app.use("/staffrequest",staffrequestRouter);
 app.use("/product",productRouter);
+
 
 
 

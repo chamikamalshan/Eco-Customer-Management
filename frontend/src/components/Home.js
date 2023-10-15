@@ -35,7 +35,7 @@ export default function Home(){
                 
 
                 <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right', marginTop:'215px'}}>
-                <Link to='/randp'>
+                <Link to='/viewproduct'>
                 <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
                 </Link>
                 <Link to='/requests'>

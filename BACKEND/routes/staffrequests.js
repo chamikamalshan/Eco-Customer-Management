@@ -10,6 +10,7 @@ router.route("/addstaffrequest").post((req,res)=>{
     const workarea = req.body.workarea;
     const reqdate =  req.body.reqdate;
     const cnumber =  Number(req.body.cnumber);
+    const reqstatus =  req.body.reqstatus;
 
 
 
@@ -17,7 +18,8 @@ router.route("/addstaffrequest").post((req,res)=>{
         staffsize,
         workarea,
         reqdate,
-        cnumber
+        cnumber,
+        reqstatus
 
     })
 
@@ -31,6 +33,14 @@ router.route("/addstaffrequest").post((req,res)=>{
 
 //Read..
 router.route("/allstaffrequest").get((req,res)=>{
+
+    StaffRequest.find().then((staffrequest)=>{
+        res.json(staffrequest)
+    }).catch((err)=>{
+        console.log(err)
+    })
+})
+router.route("/staffrequestview").get((req,res)=>{
 
     StaffRequest.find().then((staffrequest)=>{
         res.json(staffrequest)

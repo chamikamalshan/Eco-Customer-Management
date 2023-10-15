@@ -4,43 +4,40 @@ import {useReactToPrint} from "react-to-print";
 import {Link} from 'react-router-dom';
 
 
-export default function SalaryReport(){
+export default function ViewStaffSalaryReport(){
 
     const conponentPDF = useRef();
-    const[staffsalaries, setStaffSalaries] = useState([]);
+    const[staffmembers, setStaffMembers] = useState([]);
     const[search, setsearch] = useState([]);
-    
     console.log(search)
     
     
 
     useEffect(()=>{
-        function getStaffSalaries() {
-            axios.get("http://localhost:8070/staffsalary/salaryreport").then((res)=>{
-               setStaffSalaries(res.data);
+        function getStaffMembers() {
+            axios.get("http://localhost:8070/staffmember/viewstaffsalaryreport").then((res)=>{
+               setStaffMembers(res.data);
                console.log(res);
         }).catch((err)=>{
             alert(err.message);
         })
         }
-        getStaffSalaries();
+        getStaffMembers();
 
         
     
     } ) 
 
-
+    
    const generatePDF = useReactToPrint({
     content: ()=>conponentPDF.current,
     documentTitle: "userdata",
     onAfterPrint: ()=> alert("Download Successfully")
    });
-   
-   //total
-   const totalamount = staffsalaries.reduce((total,staffsalaries)=>{
-    return total + staffsalaries.samount
+
+   const totalamount = staffmembers.reduce((total,staffmembers)=>{
+    return total + staffmembers.msalary
    },0);
-   
   
 
     return(
@@ -53,7 +50,7 @@ export default function SalaryReport(){
              <div class="card-img-overlay">
               <br></br>
               <br></br>
-                <h1 class="card-title" style={{fontSize: '90px'}}><b>STAFF</b> <b class="text-success">SALARY</b></h1>
+                <h1 class="card-title" style={{fontSize: '90px'}}><b>STAFF SALARY</b> <b class="text-success">REPORT</b></h1>
                 <br></br>
                 <br></br>
                 <br></br>
@@ -79,45 +76,46 @@ export default function SalaryReport(){
         
         <div class="card-body"> 
         <br></br>
-        <h1 class="card-title text-success"><b>SALARY REPORT</b></h1>
+        <h1 class="card-title text-success"><b>STAFF SALARY REPORT</b></h1>
         <br></br>
-
         <div>
         <div ref={conponentPDF} style={{width:'100%'}}>
         <table class="table table-success table-striped">
             <thead class="table table-dark table-striped">
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Month</th>
-                    <th scope="col">Week</th>
-                    <th scope="col">Amount</th>
-                    
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">NIC</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Salary</th>
                 </tr>
             </thead>
             <tbody>
+            {staffmembers.filter((staffmembers) => {
+                return search.toString().toLowerCase() === '' ? staffmembers: staffmembers.mnic.toString().toLowerCase().includes(search);
                 
-                
-            {staffsalaries.filter((staffsalaries) => {
-                return search.toString().toLowerCase() === '' ? staffsalaries: staffsalaries.smonth.toString().toLowerCase().includes(search);
-                
-            }).map((staffsalaries, index) => {
+            }).map((staffmembers, index) => {
                 return(
-                <tr key={staffsalaries._id}>
+                <tr key={staffmembers._id}>
                     <th scoop="row">{index+1}</th>
-                    <td><a href={`/get/${staffsalaries._id}`} style={{textDecoration:'none',color:'black'}}>{staffsalaries.syear} </a> </td> 
-                    <td>{staffsalaries.smonth}</td>
-                    <td>{staffsalaries.sweek}</td>
-                    <td>{staffsalaries.samount}</td>
-                </tr>  
-                
+                    <td><a href={`/get/${staffmembers._id}`} style={{textDecoration:'none',color:'black'}}>{staffmembers.mname} </a> </td> 
+                    <td>{staffmembers.memail}</td>
+                    <td>{staffmembers.mnic}</td>
+                    <td>{staffmembers.mdate}</td>
+                    <td>{staffmembers.msalary}</td>
+                </tr>
                 )
+                
+            
+            
+           
         })}
 
-                <tr>
-                <td colspan="4" class="table-active text-center"><b>Total Amount</b></td>
-                <td><b className='text-danger'>{totalamount}</b></td>
-                </tr>
+             <tr>
+                <td colspan="5" class="table-active text-center"><b>Total Staff Salary</b></td>
+                <td><b className='text-danger'>Rs.{totalamount}</b></td>
+             </tr>
 
             </tbody>
         </table>
@@ -135,16 +133,9 @@ export default function SalaryReport(){
 
         
     </div>
-
-
-
-        </div>
-        </div>
-        </div>
-
-
-
-        
+    </div>
+    </div>
+    </div>
     </div>
 
     <br></br>

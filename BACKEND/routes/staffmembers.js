@@ -9,6 +9,7 @@ router.route("/addsmember").post((req,res)=>{
     const mname = req.body.mname;
     const memail = req.body.memail;
     const mphone =  Number(req.body.mphone);
+    const mdate = req.body.mdate;
     const maddress =  req.body.maddress;
     const mage =  Number(req.body.mage);
     const mgender = req.body.mgender;
@@ -23,6 +24,7 @@ router.route("/addsmember").post((req,res)=>{
         mname,
         memail,
         mphone,
+        mdate,
         maddress,
         mage,
         mgender,
@@ -51,7 +53,16 @@ router.route("/allsmember").get((req,res)=>{
     })
 })
 
-router.route("/staffsalaries").get((req,res)=>{
+router.route("/staffsalaryreport").get((req,res)=>{
+
+    StaffMember.find().then((staffmember)=>{
+        res.json(staffmember)
+    }).catch((err)=>{
+        console.log(err)
+    })
+})
+
+router.route("/viewstaffsalaryreport").get((req,res)=>{
 
     StaffMember.find().then((staffmember)=>{
         res.json(staffmember)

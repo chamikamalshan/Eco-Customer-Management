@@ -44,14 +44,16 @@ router.route("/all").get((req,res)=>{
     })
 })
 
-router.route("/table").get((req,res)=>{
+router.route("/allreq").get((req,res)=>{
 
-    Request.find().then(()=>{
+    Request.find().then((request)=>{
         res.json(request)
     }).catch((err)=>{
         console.log(err)
     })
 })
+
+
 
 //Update Class..
 /*router.route("/update/:id").put(async (req, res) => {

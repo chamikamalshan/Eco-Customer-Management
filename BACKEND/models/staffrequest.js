@@ -19,6 +19,10 @@ const staffrequestSchema = new Schema({
     cnumber : {
         type : Number,
         required: true
+    },
+    reqstatus : {
+        type : String,
+        required: true
     }
 
 })

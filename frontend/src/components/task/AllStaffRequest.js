@@ -60,7 +60,7 @@ export default function AllStaffRequest(){
         <div>
 
         <div class="card bg-dark text-white" >
-           <img src="financebg.png" class="card-img" alt="..." style={{height: '375px', filter: 'brightness(40%)'}}/>
+           <img src="staffbg.png" class="card-img" alt="..." style={{height: '375px', filter: 'brightness(40%)'}}/>
              <div class="card-img-overlay">
               <br></br>
               <br></br>
@@ -69,15 +69,7 @@ export default function AllStaffRequest(){
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
+               
 
              </div>
           </div>
@@ -89,9 +81,6 @@ export default function AllStaffRequest(){
         <div style={{width:'1350px'}} >
         <br></br>
         <br></br>
-        <Link to='/addstaffrequest'>
-        <button type="button" class="btn1 btn-success btn-lg" ><i class="fa-solid fa-folder-plus"></i>ADD</button>
-        </Link>
         <br></br>
         <br></br>
         <form class="d-flex">
@@ -108,6 +97,7 @@ export default function AllStaffRequest(){
                     <th scope="col">Area of Work</th>
                     <th scope="col">Date</th>
                     <th scope="col">Contact No</th>
+                    <th scope="col">Status</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -123,6 +113,7 @@ export default function AllStaffRequest(){
                     <td>{staffrequests.workarea}</td>
                     <td>{staffrequests.reqdate}</td>
                     <td>{staffrequests.cnumber}</td>
+                    <td>{staffrequests.reqstatus}</td>
                     <td>
                         <a className="btn btn-success" href={`/updatestaffrequest/${staffrequests._id}`}>
                             <i className="fas fa-edit"></i>&nbsp;Update

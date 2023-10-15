@@ -10,6 +10,7 @@ export default function AddStaffMember(){
   const [mname, setMName] = useState("");
   const [memail, setMEmail] = useState("");
   const [mphone, setMPhone] = useState("");
+  const [mdate, setMDate] = useState("");
   const [maddress, setMAddress] = useState("");
   const [mage, setMAge] = useState("");
   const [mgender, setMGender] = useState("");
@@ -29,6 +30,7 @@ export default function AddStaffMember(){
         mname,
         memail,
         mphone,
+        mdate,
         maddress,
         mage,
         mgender,
@@ -39,11 +41,11 @@ export default function AddStaffMember(){
      
     }
 
-    if(mname.length==0||memail.length==0||mphone.length==0||maddress.length==0||mage.length==0||mgender.length==0||mrole.length==0||mnic.length==0||mwdays.length==0||msalary.length==0)
+    if(mname.length==0||memail.length==0||mphone.length==0||mdate.length==0||maddress.length==0||mage.length==0||mgender.length==0||mrole.length==0||mnic.length==0||mwdays.length==0||msalary.length==0)
     setError(true)
-    if(mname&&memail&&mphone&&maddress&&mage&&mgender&&mrole&&mnic&&mwdays&&msalary)
+    if(mname&&memail&&mphone&&mdate&&maddress&&mage&&mgender&&mrole&&mnic&&mwdays&&msalary)
     {
-      console.log("MName:",mname,"MEmail:",memail,"MPhone:",mphone,"MAddress:",maddress,"MAge:",mage,"MGender:",mgender,"MRole:",mrole,"MNIC:",mnic,"MWDays:",mwdays,"MSalary:",msalary)
+      console.log("MName:",mname,"MEmail:",memail,"MPhone:",mphone,"MDate:",mdate,"MAddress:",maddress,"MAge:",mage,"MGender:",mgender,"MRole:",mrole,"MNIC:",mnic,"MWDays:",mwdays,"MSalary:",msalary)
     }
 
     axios.post("http://localhost:8070/staffmember/addsmember",newStaffMember).then(()=>{ 
@@ -51,6 +53,7 @@ export default function AddStaffMember(){
       setMName("");
       setMEmail("");
       setMPhone("");
+      setMDate("");
       setMAddress("");
       setMAge("");
       setMGender("");
@@ -70,10 +73,9 @@ export default function AddStaffMember(){
   
   }
 
-  const hadleSubmit=(e)=>{
-    e.preventDefault();
-    
-  }
+  var date = new Date();
+  date.setDate(date.getDate() + 7);
+
 
  
 
@@ -93,15 +95,7 @@ export default function AddStaffMember(){
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
+               
 
              </div>
           </div>
@@ -148,7 +142,7 @@ export default function AddStaffMember(){
               </div>
               <div class="col-md-6">
                   <label for="validationServer01" class="form-label" style={{float: 'left'}}><b>Phone No:</b></label>
-                  <input type="tel" class="form-control is-invalid" id="validationServer01" aria-label="Default select example"
+                  <input type="number" class="form-control is-invalid" id="validationServer01" aria-label="Default select example"
                   onChange={(e)=>{
 
                     setMPhone(e.target.value = e.target.value.slice(0, 10));
@@ -156,6 +150,19 @@ export default function AddStaffMember(){
                     }}required/>
                   <div className="invalid-feedback">
                     {error&&mphone.length<=0?<lable class="text" style={{color:'#FF0000'}}>Phone No can't be empty!</lable>:""}
+                  </div>
+
+              </div>
+              <div class="col-md-6">
+                  <label for="validationServer01" class="form-label" style={{float: 'left'}}><b>Date:</b></label>
+                  <input type="date" class="form-control is-invalid" id="validationServer01" aria-label="Default select example" min={new Date().toISOString().split('T')[0]} max={date.toISOString().split('T')[0]}
+                  onChange={(e)=>{
+
+                    setMDate(e.target.value);
+                  
+                    }}required/>
+                  <div className="invalid-feedback">
+                    {error&&mdate.length<=0?<lable class="text" style={{color:'#FF0000'}}>Date can't be empty!</lable>:""}
                   </div>
 
               </div>
@@ -204,12 +211,19 @@ export default function AddStaffMember(){
               </div>
               <div class="col-md-6">
                   <label for="validationServer01" class="form-label" style={{float: 'left'}}><b>Role:</b></label>
-                  <input type="text" class="form-control is-invalid" id="validationServer01" aria-label="Default select example"
+                  <select class="form-select is-invalid" id="validationServer01" aria-label="Default select example"
                   onChange={(e)=>{
 
                     setMRole(e.target.value);
                   
-                    }}required/>
+                    }}required>
+                    <option value="">Open this select menu</option>
+                    <option value="Male">Recycling Facility Manager</option>
+                    <option value="Female">Driver</option>
+                    <option value="Male">Cleaner</option>
+                    <option value="Female">Waste Collection Supervisor</option>
+                    <option value="Male">Recycling Workers</option>
+                  </select>
                   <div className="invalid-feedback">
                     {error&&mrole.length<=0?<lable class="text" style={{color:'#FF0000'}}>Role can't be empty!</lable>:""}
                   </div>
