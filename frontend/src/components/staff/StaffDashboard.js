@@ -28,21 +28,12 @@ export default function StaffDashboard(){
              <div class="card-img-overlay">
               <br></br>
               <br></br>
-                <h1 class="card-title" style={{fontSize: '90px'}}><b>FINANCE</b> <b class="text-success">DASHBOARD</b></h1>
+                <h1 class="card-title" style={{fontSize: '90px'}}><b>STAFF</b> <b class="text-success">DASHBOARD</b></h1>
                 <br></br>
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
-
+                
              </div>
           </div>
 
@@ -71,7 +62,7 @@ export default function StaffDashboard(){
       </center>
       <br></br>
       <div class="card-body">
-        <Link to='/salaryreport'>
+        <Link to='/staffrequestview'>
       <button type="button" class="btn btn-outline-light" style={{marginTop: '100px'}}>CLICK</button>
       </Link>
       </div>
@@ -119,7 +110,7 @@ export default function StaffDashboard(){
       </center>
       <br></br>
       <div class="card-body">
-        <Link to='/allssalary'>
+        <Link to='/staffsalaryreport'>
       <button type="button" class="btn btn-outline-light" style={{marginTop: '100px'}}>CLICK</button>
       </Link>
       </div>

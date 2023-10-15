@@ -16,6 +16,10 @@ const staffmemberSchema = new Schema({
         type : Number,
         required: true
     },
+    mdate : {
+        type : String,
+        required: true
+    },
     maddress : {
         type : String,
         required: true

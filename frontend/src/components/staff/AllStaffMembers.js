@@ -69,15 +69,7 @@ export default function AllStaffMembers(){
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
+                
 
              </div>
           </div>
@@ -94,9 +86,11 @@ export default function AllStaffMembers(){
         </Link>
         <br></br>
         <br></br>
+
         <form class="d-flex">
         <input class="form-control me-2 " type="text" onChange={(e) => setsearch(e.target.value)} placeholder="Search by Name" aria-label="Search"/>
         </form>
+
         <br></br>
         <div>
         <div ref={conponentPDF} style={{width:'100%'}}>
@@ -107,6 +101,7 @@ export default function AllStaffMembers(){
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Gender</th>
                     <th scope="col">NIC</th>
                     <th scope="col"></th>
@@ -114,7 +109,7 @@ export default function AllStaffMembers(){
             </thead>
             <tbody>
             {staffmembers.filter((staffmembers) => {
-                return search.toString().toLowerCase() === '' ? staffmembers: staffmembers.mname.toString().toLowerCase().includes(search);
+                return search.toString().toLowerCase() === '' ? staffmembers: staffmembers.mnic.toString().toLowerCase().includes(search);
                 
             }).map((staffmembers, index) => {
                 return(
@@ -123,6 +118,7 @@ export default function AllStaffMembers(){
                     <td><a href={`/get/${staffmembers._id}`} style={{textDecoration:'none',color:'black'}}>{staffmembers.mname} </a> </td> 
                     <td>{staffmembers.memail}</td>
                     <td>{staffmembers.mphone}</td>
+                    <td>{staffmembers.mdate}</td>
                     <td>{staffmembers.mgender}</td>
                     <td>{staffmembers.mnic}</td>
                     <td>

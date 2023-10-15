@@ -51,6 +51,12 @@ import AllProduct from './components/product/AllProduct.js';
 import CheckProduct from './components/product/CheckProduct';
 import ViewProduct from './components/product/ViewProduct.js';
 import UpdateProduct from './components/product/UpdateProduct';
+import ViewRequest from './components/task/ViewRequest';
+import StaffSalaryReport from './components/staff/StaffSalaryReport';
+import ViewStaffRequest from './components/staff/ViewStaffRequest';
+import ViewStaffSalaryReport from './components/finance/ViewStaffSalaryReport';
+import ViewWasteReport from './components/finance/ViewWasteReport';
+import ReportDash from './components/finance/ReportDash';
 
 
 
@@ -122,10 +128,13 @@ function App() {
 
       <Route path="/financedash" element={<FinanceDashboard/>}/>
       <Route path="/allssalary" element={<AllStaffSalary/>}/>
+      <Route path="/fwastereport" element={<ViewWasteReport/>}/>
+      <Route path="/viewstaffsalaryreport" element={<ViewStaffSalaryReport/>}/>
       <Route path="/addssalary" element={<AddStaffSalary/>}/>
       <Route path="/updatessalary/:id" element={<UpdateStaffSalary/>}/>
       <Route path="/getssalary/:id" element={<UpdateStaffSalary/>}/>
       <Route path="/salaryreport" element={<SalaryReport/>}/>
+      <Route path="/reportdash" element={<ReportDash/>}/>
 
 
       <Route path="/wastedash" element={<WasteDashboard/>}/>
@@ -139,6 +148,8 @@ function App() {
       <Route path="/staffdash" element={<StaffDashboard/>}/>
       <Route path="/addsmember" element={<AddStaffMember/>}/>
       <Route path="/allsmember" element={<AllStaffMembers/>}/>
+      <Route path="/staffsalaryreport" element={<StaffSalaryReport/>}/>
+      <Route path="/staffrequestview" element={<ViewStaffRequest/>}/>
       <Route path="/updatesmember/:id" element={<UpdateStaffMember/>}/>
       <Route path="/getsmember/:id" element={<UpdateStaffMember/>}/>
 
@@ -146,8 +157,10 @@ function App() {
       <Route path="/taskdash" element={<TaskDashboard/>}/>
       <Route path="/addstaffrequest" element={<AddStaffRequest/>}/>
       <Route path="/allstaffrequest" element={<AllStaffRequest/>}/>
+      <Route path="/allreq" element={<ViewRequest/>}/>
       <Route path="/updatestaffrequest/:id" element={<UpdateStaffRequest/>}/>
       <Route path="/getstaffrequest/:id" element={<UpdateStaffRequest/>}/>
+
 
       <Route path="/productdash" element={<ProductDashboard/>}/>
       <Route path="/addproduct" element={<AddProduct/>}/>

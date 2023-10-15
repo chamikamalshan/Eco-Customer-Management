@@ -121,7 +121,7 @@ export default function UpdateRequest(){
                   <input type="tel" class="form-control is-invalid" id="inputPassword4" value={phone}
                   onChange={(e)=>{
 
-                    setPhone(e.target.value);
+                    setPhone(e.target.value = e.target.value.slice(0, 10));
         
                   }}required/>
                   <div className="invalid-feedback">
@@ -142,7 +142,7 @@ export default function UpdateRequest(){
               </div>
               <div class="col-md-6">
                   <label for="inputAddress2" class="form-label" style={{float: 'left'}}><b>Pick up date:</b></label>
-                  <input type="date" class="form-control is-invalid" id="inputAddress2" placeholder="" value={date}
+                  <input type="date" class="form-control is-invalid" id="inputAddress2" placeholder="" value={date} min={new Date().toISOString().split('T')[0]}
                   onChange={(e)=>{
 
                     setDate(e.target.value);

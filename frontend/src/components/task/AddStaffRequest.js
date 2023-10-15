@@ -11,6 +11,7 @@ export default function AddStaffRequest(){
   const [workarea, setWorkArea] = useState("");
   const [reqdate, setReqDate] = useState("");
   const [cnumber, setCNumber] = useState("");
+  const [reqstatus, setReqStatus] = useState("");
   const [error, setError] = useState("false");
   const location = useLocation();
   const data = location.state;
@@ -23,14 +24,15 @@ export default function AddStaffRequest(){
         staffsize,
         workarea,
         reqdate,
-        cnumber
+        cnumber,
+        reqstatus
     }
 
-    if(staffsize.length==0||workarea.length==0||reqdate.length==0||cnumber.length==0)
+    if(staffsize.length==0||workarea.length==0||reqdate.length==0||cnumber.length==0||reqstatus.length==0)
     setError(true)
-    if(staffsize&&workarea&&reqdate&&cnumber)
+    if(staffsize&&workarea&&reqdate&&cnumber&&reqstatus)
     {
-      console.log("StaffSize:",staffsize,"WorkArea:",workarea,"ReqDate:",reqdate,"CNumber:",cnumber)
+      console.log("StaffSize:",staffsize,"WorkArea:",workarea,"ReqDate:",reqdate,"CNumber:",cnumber,"ReqStatus:",reqstatus)
     }
 
     axios.post("http://localhost:8070/staffrequest/addstaffrequest",newStaffRequest).then(()=>{ 
@@ -39,6 +41,7 @@ export default function AddStaffRequest(){
       setWorkArea("");
       setReqDate("");
       setCNumber("");
+      setReqStatus("");
 
       navigate('/home')
       
@@ -70,15 +73,7 @@ export default function AddStaffRequest(){
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
+                
 
              </div>
           </div>
@@ -138,7 +133,7 @@ export default function AddStaffRequest(){
               </div>
               <div class="col-md-6">
                   <label for="validationServer01" class="form-label" style={{float: 'left'}}><b>Contact No:</b></label>
-                  <input type="tel" class="form-control is-invalid"   id="validationServer01" aria-label="Default select example"
+                  <input type="number" class="form-control is-invalid"   id="validationServer01" aria-label="Default select example"
                   onChange={(e)=>{
 
                     setCNumber(e.target.value = e.target.value.slice(0, 10));
@@ -148,6 +143,22 @@ export default function AddStaffRequest(){
                     {error&&cnumber.length<=0?<lable class="text" style={{color:'#FF0000'}}>Contact Number can't be empty!</lable>:""}
                   </div>
 
+              </div>
+              <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label" style={{float: 'left'}}><b>Status:</b></label>
+                  <select class="form-select is-invalid" id="validationServer01" aria-label="Default select example"
+                  onChange={(e)=>{
+
+                    setReqStatus(e.target.value);
+                  
+                    }}required>
+                    <option value="">Open this select menu</option>
+                    <option value="Special Service">Special Service</option>
+                    <option value="Regular Service">Regular Service</option>
+                    </select>
+                    <div className="invalid-feedback">
+                  {error&&reqstatus.length<=0?<lable class="text" style={{color:'#FF0000'}}>Status can't be empty!</lable>:""}
+                  </div> 
               </div>
              
               <div class="col-12">

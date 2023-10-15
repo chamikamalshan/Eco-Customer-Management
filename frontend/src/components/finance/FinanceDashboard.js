@@ -33,15 +33,7 @@ export default function FinanceDashboard(){
                 <br></br>
                 <br></br>
 
-                <div class="btn-group" role="group" aria-label="Basic example" style={{float: 'right'}}>
-                <Link to='/randp'>
-                <button type="button" class="btn1 btn-success btn-lg" style={{marginRight: '50px'}}>RESEARCH AND PRODUCTS</button>
-                </Link>
-                <Link to='/requests'>
-                <button type="button" class="btn2 btn-success btn-lg" style={{marginRight: '50px'}}>REQUEST PICKUP</button>
-                </Link>
-                <button type="button" class="btn3 btn-success btn-lg" style={{marginRight: '50px'}}>PAYMENT</button>
-                </div>
+                
 
              </div>
           </div>
@@ -52,7 +44,7 @@ export default function FinanceDashboard(){
 
         <div >
 
-<div class="row row-cols-1 row-cols-md-3 g-4" style={{marginLeft: '40px'}}>
+<div class="row row-cols-1 row-cols-md-3 g-4" style={{marginLeft: '270px'}}>
   <div class="col" style={{maxWidth: '420px',marginLeft: '40px'}}>
     <div class="card text-white bg-success" style={{height:'600px',filter: 'brightness(80%)'}}>
       <br></br>
@@ -71,36 +63,13 @@ export default function FinanceDashboard(){
       </center>
       <br></br>
       <div class="card-body">
-        <Link to='/salaryreport'>
+        <Link to='/reportdash'>
       <button type="button" class="btn btn-outline-light" style={{marginTop: '100px'}}>CLICK</button>
       </Link>
       </div>
     </div>
   </div>
-  <div class="col" style={{maxWidth: '420px',marginLeft: '40px'}}>
-    <div class="card text-white bg-primary" style={{height:'600px',filter: 'brightness(80%)'}}>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <center>
-      <i class="fa-solid fa-screwdriver-wrench fa-10x"></i>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-
-      <h1 class="card-title"><b class="text-white">MAINTENANCE</b></h1>
-      
-      </center>
-      <br></br>
-      <div class="card-body">
-        <Link to=''>
-      <button type="button" class="btn btn-outline-light" style={{marginTop: '100px'}}>CLICK</button>
-      </Link>
-      </div>
-    </div>
-  </div>
+  
   <div class="col" style={{maxWidth: '420px',marginLeft: '40px'}}>
     <div class="card text-white bg-warning" style={{height:'600px',filter: 'brightness(80%)'}}>
       <br></br>
