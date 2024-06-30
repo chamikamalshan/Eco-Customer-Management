@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "heroku-postbuild":"cd.. && cd frontend && npm install --only=dev && npm install && npm run build",
+    "heroku-postbuild": "cd ../frontend && npm install && npm run build",
     "dev": "concurrently \"cd.. && cd frontend && npm start\" \"nodemon server.js\""
   },
   "author": "Chamika Malshan",
