@@ -12,14 +12,9 @@ const dotenv = require("dotenv")
 const app = express();
 const stripe = require("stripe")("sk_test_51NqHFfB36akorYVl66XfLD8NSaoMvad28vPp0at2SXWbA6A28DaLvsWZFAlE5dGQJkWtPCyIeub9MZYh12bHvIvL009W00Mftn")
 require("dotenv").config();
-const path = require("path");
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "frontend", "build")));
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
-    });
-}
-const PORT = process.env.PORT || 8070;
+
+
+
 
 
 app.use(cors());
@@ -63,6 +58,17 @@ app.use("/staffmember",staffmemberRouter);
 app.use("/staffrequest",staffrequestRouter);
 app.use("/product",productRouter);
 
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "..", "frontend", "build")));
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"), (err) => {
+            if (err) {
+                res.status(500).send(err);
+            }
+        });
+    });
+}
 
 
 
@@ -212,7 +218,7 @@ app.post('/checkout', async(req,res) => {
 })
 
 
-
+const PORT = process.env.PORT || 8070;
 app.listen(PORT, () => {
     console.log(`Server is up and running on port number: ${PORT}`);
 })
