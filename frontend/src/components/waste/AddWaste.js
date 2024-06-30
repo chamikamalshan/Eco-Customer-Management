@@ -26,6 +26,7 @@ export default function AddWaste(){
       dsite
      
     }
+    
 
     if(wtype.length==0||weight.length==0||wprice.length==0||dsite.length==0)
     setError(true)
